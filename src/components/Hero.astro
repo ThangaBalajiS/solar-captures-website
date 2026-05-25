@@ -1,0 +1,66 @@
+---
+---
+<section class="relative h-screen flex items-center justify-center overflow-hidden">
+  <div class="absolute inset-0 z-0 bg-primary">
+    <video 
+      id="hero-video"
+      autoplay 
+      loop 
+      muted 
+      playsinline 
+      class="w-full h-full object-cover filter brightness-[0.4]"
+      poster="/vecteezy_modern-house-with-blue-solar-panels-on-the-roof-end-of-the_32412757.jpg"
+    >
+      <source src="/file.mp4" type="video/mp4" />
+    </video>
+  </div>
+  
+  <div class="relative z-10 container mx-auto px-6 text-center text-white">
+    <span class="inline-block mb-4 text-accent font-medium tracking-widest uppercase text-sm animate-fade-in">
+      Sustainable Energy Solutions
+    </span>
+    <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif mb-6 leading-tight animate-slide-up">
+      Let the sun pay <br class="hidden md:block" /> your bills.
+    </h1>
+    <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 font-light leading-relaxed animate-slide-up-delayed">
+      Save up to 90% on electricity bills with Chennai's trusted solar experts. MNRE approved and engineering focused.
+    </p>
+    <div class="flex flex-col md:flex-row items-center justify-center gap-4 animate-slide-up-delayed-more">
+      <a href="#quote" class="px-8 py-4 bg-accent text-primary font-semibold rounded-sm hover:bg-white transition-colors duration-300 w-full md:w-auto">
+        Get Free Quote
+      </a>
+      <a href="#services" class="px-8 py-4 border border-white text-white font-medium rounded-sm hover:bg-white hover:text-primary transition-all duration-300 w-full md:w-auto">
+        Our Solutions
+      </a>
+    </div>
+  </div>
+
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    </svg>
+  </div>
+</section>
+
+<style>
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in { animation: fade-in 1s ease-out forwards; }
+  .animate-slide-up { animation: slide-up 1s ease-out forwards; }
+  .animate-slide-up-delayed { animation: slide-up 1s ease-out 0.3s forwards; opacity: 0; }
+  .animate-slide-up-delayed-more { animation: slide-up 1s ease-out 0.6s forwards; opacity: 0; }
+</style>
+
+<script>
+  // Slow down the background video to make it last longer and feel more elegant
+  const video = document.getElementById('hero-video') as HTMLVideoElement;
+  if (video) {
+    video.playbackRate = 0.5; // Plays at half speed
+  }
+</script>

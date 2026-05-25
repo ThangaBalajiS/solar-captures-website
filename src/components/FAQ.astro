@@ -1,0 +1,52 @@
+---
+const faqs = [
+  {
+    q: "Why should I switch to solar energy?",
+    a: "Solar energy reduces your reliance on the grid, cuts your electricity bills by up to 90%, and significantly reduces your carbon footprint. It's an investment that pays for itself in 3-5 years."
+  },
+  {
+    q: "How much can I save with solar?",
+    a: "Most residential users save between 70% and 90% on their monthly EB bills. The exact amount depends on your system size and consumption patterns."
+  },
+  {
+    q: "Is there maintenance involved?",
+    a: "On-grid solar systems are virtually maintenance-free. Periodic cleaning of the panels with water is usually all that's required to maintain optimal performance."
+  },
+  {
+    q: "How long do the panels last?",
+    a: "Standard high-performance solar panels come with a performance warranty of 25 years. They are designed to withstand harsh weather conditions including heat and high winds."
+  }
+];
+---
+<section class="py-24 bg-[#FCFCFC]">
+  <div class="container mx-auto px-6 max-w-4xl">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-serif text-primary mb-4">Common Questions</h2>
+      <p class="text-gray-500 font-light italic">Everything you need to know about going solar.</p>
+    </div>
+
+    <div class="space-y-4">
+      {faqs.map(faq => (
+        <details class="group bg-white border border-gray-100 rounded-sm">
+          <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+            <span class="text-primary font-medium">{faq.q}</span>
+            <span class="text-accent group-open:rotate-180 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </span>
+          </summary>
+          <div class="px-6 pb-6 text-gray-500 font-light leading-relaxed text-sm">
+            {faq.a}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  summary::-webkit-details-marker {
+    display: none;
+  }
+</style>
