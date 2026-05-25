@@ -18,16 +18,16 @@ const faqs = [
   }
 ];
 ---
-<section class="py-24 bg-[#FCFCFC]">
+<section class="py-24 bg-transparent">
   <div class="container mx-auto px-6 max-w-4xl">
     <div class="text-center mb-16">
       <h2 class="text-4xl font-serif text-primary mb-4">Common Questions</h2>
-      <p class="text-gray-500 font-light italic">Everything you need to know about going solar.</p>
+      <p class="text-gray-600 font-light text-lg">Everything you need to know about going solar.</p>
     </div>
 
     <div class="space-y-4">
       {faqs.map(faq => (
-        <details class="group bg-white border border-gray-100 rounded-sm">
+        <details class="group bg-white border border-gray-200/60 rounded-2xl shadow-sm transition-all duration-300 hover:shadow-md">
           <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
             <span class="text-primary font-medium">{faq.q}</span>
             <span class="text-accent group-open:rotate-180 transition-transform duration-300">

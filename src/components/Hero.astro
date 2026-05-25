@@ -1,44 +1,66 @@
 ---
 ---
-<section class="relative h-screen flex items-center justify-center overflow-hidden">
-  <div class="absolute inset-0 z-0 bg-primary">
-    <video 
-      id="hero-video"
-      autoplay 
-      loop 
-      muted 
-      playsinline 
-      class="w-full h-full object-cover filter brightness-[0.4]"
-      poster="/vecteezy_modern-house-with-blue-solar-panels-on-the-roof-end-of-the_32412757.jpg"
-    >
-      <source src="/file.mp4" type="video/mp4" />
-    </video>
-  </div>
-  
-  <div class="relative z-10 container mx-auto px-6 text-center text-white">
-    <span class="inline-block mb-4 text-accent font-medium tracking-widest uppercase text-sm animate-fade-in">
-      Sustainable Energy Solutions
-    </span>
-    <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif mb-6 leading-tight animate-slide-up">
-      Let the sun pay <br class="hidden md:block" /> your bills.
-    </h1>
-    <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 font-light leading-relaxed animate-slide-up-delayed">
-      Save up to 90% on electricity bills with Chennai's trusted solar experts. MNRE approved and engineering focused.
-    </p>
-    <div class="flex flex-col md:flex-row items-center justify-center gap-4 animate-slide-up-delayed-more">
-      <a href="#quote" class="px-8 py-4 bg-accent text-primary font-semibold rounded-sm hover:bg-white transition-colors duration-300 w-full md:w-auto">
-        Get Free Quote
-      </a>
-      <a href="#services" class="px-8 py-4 border border-white text-white font-medium rounded-sm hover:bg-white hover:text-primary transition-all duration-300 w-full md:w-auto">
-        Our Solutions
-      </a>
-    </div>
-  </div>
+<section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-earth">
+  <div class="container mx-auto px-6">
+    <div class="flex flex-col lg:flex-row items-center gap-16">
+      
+      <!-- Left Content -->
+      <div class="lg:w-1/2 relative z-10 text-center lg:text-left">
+        <span class="inline-block mb-6 text-leaf font-semibold tracking-widest uppercase text-xs bg-leaf/10 px-4 py-2 rounded-full border border-leaf/20 animate-fade-in">
+          Sustainable Energy Solutions
+        </span>
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif mb-6 leading-[1.1] tracking-tight text-primary animate-slide-up text-balance">
+          Let the sun pay <br class="hidden lg:block" /> your bills.
+        </h1>
+        <p class="text-lg md:text-xl text-gray-600 max-w-xl mx-auto lg:mx-0 mb-10 font-light leading-relaxed animate-slide-up-delayed">
+          Save up to 90% on electricity bills with Chennai's trusted solar experts. MNRE approved and engineering focused.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 animate-slide-up-delayed-more">
+          <a href="#subsidies" class="px-8 py-4 bg-accent text-primary font-semibold rounded-2xl hover:bg-primary hover:text-white shadow-lg shadow-accent/20 hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto text-center">
+            Calculate Savings
+          </a>
+          <a href="#services" class="px-8 py-4 bg-white border border-gray-200 text-primary font-medium rounded-2xl hover:border-primary hover:bg-gray-50 transition-all duration-300 w-full sm:w-auto text-center shadow-sm">
+            Our Solutions
+          </a>
+        </div>
+      </div>
+      
+      <!-- Right Media -->
+      <div class="lg:w-1/2 w-full relative animate-slide-up-delayed">
+        <!-- Decorative background shape -->
+        <div class="absolute inset-0 bg-accent/20 rounded-[3rem] -rotate-3 scale-105 origin-center transition-transform duration-700 hover:rotate-0"></div>
+        
+        <div class="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[4/5] sm:aspect-square md:aspect-[4/3] lg:aspect-[4/5] border border-white/50 bg-primary/5">
+          <img 
+            src="/hero-image.png" 
+            alt="Modern home with sleek solar panels" 
+            class="w-full h-full object-cover scale-105 transition-transform duration-700 hover:scale-110"
+          />
+          <!-- Soft inner shadow gradient -->
+          <div class="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent mix-blend-multiply pointer-events-none"></div>
+        </div>
 
-  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-    </svg>
+        <!-- Floating Card 1 -->
+        <div class="absolute -bottom-6 -left-6 md:-left-8 bg-white p-5 rounded-3xl shadow-xl border border-gray-100 flex items-center gap-4 animate-bounce-slow">
+          <div class="w-12 h-12 bg-leaf/10 rounded-full flex items-center justify-center text-leaf shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div>
+            <p class="text-primary font-serif text-xl font-bold leading-none mb-1">MNRE</p>
+            <p class="text-gray-500 text-[10px] uppercase tracking-wider font-semibold">Approved Partner</p>
+          </div>
+        </div>
+
+        <!-- Floating Card 2 -->
+        <div class="absolute top-12 -right-6 md:-right-8 bg-white p-5 rounded-3xl shadow-xl border border-gray-100 flex flex-col gap-1 animate-bounce-slow-delayed hidden sm:flex">
+          <p class="text-accent font-serif text-3xl font-bold leading-none">90%</p>
+          <p class="text-gray-500 text-[10px] uppercase tracking-wider font-semibold">Max Bill Savings</p>
+        </div>
+      </div>
+      
+    </div>
   </div>
 </section>
 
@@ -48,19 +70,18 @@
     to { opacity: 1; }
   }
   @keyframes slide-up {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
   }
   .animate-fade-in { animation: fade-in 1s ease-out forwards; }
-  .animate-slide-up { animation: slide-up 1s ease-out forwards; }
-  .animate-slide-up-delayed { animation: slide-up 1s ease-out 0.3s forwards; opacity: 0; }
-  .animate-slide-up-delayed-more { animation: slide-up 1s ease-out 0.6s forwards; opacity: 0; }
-</style>
-
-<script>
-  // Slow down the background video to make it last longer and feel more elegant
-  const video = document.getElementById('hero-video') as HTMLVideoElement;
-  if (video) {
-    video.playbackRate = 0.5; // Plays at half speed
+  .animate-slide-up { animation: slide-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  .animate-slide-up-delayed { animation: slide-up 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards; opacity: 0; }
+  .animate-slide-up-delayed-more { animation: slide-up 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards; opacity: 0; }
+  
+  @keyframes bounce-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
   }
-</script>
+  .animate-bounce-slow { animation: bounce-slow 6s ease-in-out infinite; }
+  .animate-bounce-slow-delayed { animation: bounce-slow 6s ease-in-out 3s infinite; }
+</style>

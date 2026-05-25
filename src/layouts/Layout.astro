@@ -20,15 +20,15 @@ const { title, description = "Solar Captures - Generate Your Own Power. Save up 
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 	</head>
-	<body class="bg-[#FCFCFC] text-[#1A1A1A] font-sans antialiased">
+	<body class="bg-earth text-[#1A1A1A] font-sans antialiased selection:bg-accent/30 selection:text-primary">
 		<slot />
 	</body>
 </html>
 <style is:global>
 	:root {
-		--primary: #1A1A1A;
-		--accent: #FFD700;
-		--bg: #FCFCFC;
+		--primary: #0F172A;
+		--accent: #F59E0B;
+		--bg: #F4F1EA;
 	}
 	
 	h1, h2, h3, h4, .font-serif {
@@ -37,6 +37,7 @@ const { title, description = "Solar Captures - Generate Your Own Power. Save up 
 	
 	body {
 		font-family: 'Inter', sans-serif;
+		background-color: var(--bg);
 	}
 
 	.text-balance {
