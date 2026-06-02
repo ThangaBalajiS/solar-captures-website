@@ -1,0 +1,645 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Solar Captures — Sun-Drenched Precision Engineering</title>
+  <style>
+    :root {
+      /* Cinematic Light & Glass Palette (Light Mode - Sun-Drenched) */
+      --bg:      oklch(99% 0.005 250);   /* Pristine Cloud White */
+      --surface: oklch(100% 0 0 / 0.75);  /* Frosted White Glass */
+      --fg:      oklch(15% 0.02 250);    /* Deep Carbon */
+      --muted:   oklch(55% 0.02 250);    /* Soft Steel */
+      --border:  oklch(88% 0.03 250 / 0.8); /* Morning Mist Border */
+      --accent:  oklch(68% 0.22 45);     /* Focused Sunbeam (Vibrant Orange) */
+      --accent-soft: oklch(68% 0.22 45 / 0.15);
+      --flare:   oklch(68% 0.22 45 / 0.08);
+
+      --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", system-ui, sans-serif;
+      --font-body:    -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+      --font-mono:    ui-monospace, "SF Mono", "JetBrains Mono", monospace;
+
+      --radius-glass: 16px;
+      --radius-ui: 4px;
+      --glass-blur: blur(24px) saturate(180%);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* --- Sun-Drenched Atmospheric Backgrounds --- */
+    .bg-flare {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .flare-1 {
+      position: absolute;
+      top: -10%;
+      right: -5%;
+      width: 70vw;
+      height: 70vw;
+      background: radial-gradient(circle, var(--flare) 0%, transparent 70%);
+      filter: blur(60px);
+      animation: drift 25s infinite alternate ease-in-out;
+    }
+
+    .flare-2 {
+      position: absolute;
+      bottom: -15%;
+      left: -10%;
+      width: 60vw;
+      height: 60vw;
+      background: radial-gradient(circle, oklch(90% 0.1 200 / 0.05) 0%, transparent 70%);
+      filter: blur(90px);
+      animation: drift 30s infinite alternate-reverse ease-in-out;
+    }
+
+    @keyframes drift {
+      from { transform: translate(0, 0) rotate(0deg); }
+      to { transform: translate(3%, 3%) rotate(5deg); }
+    }
+
+    /* --- Typography --- */
+    h1, h2, h3 { 
+      font-family: var(--font-display); 
+      font-weight: 800; 
+      letter-spacing: -0.04em; 
+      line-height: 0.95;
+      text-transform: uppercase;
+    }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: block;
+      opacity: 0.9;
+    }
+
+    /* --- Navigation --- */
+    nav {
+      position: fixed;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 48px);
+      max-width: 1200px;
+      height: 64px;
+      z-index: 1000;
+      background: var(--surface);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--border);
+      border-radius: 32px;
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      justify-content: space-between;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--fg);
+      text-decoration: none;
+    }
+
+    .logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--fg); }
+
+    /* --- Hero Section --- */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      width: 100%;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(4rem, 10vw, 8rem);
+      margin-bottom: 2.5rem;
+      color: var(--fg);
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--muted);
+      max-width: 500px;
+      margin-bottom: 3.5rem;
+      font-weight: 400;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      border-radius: var(--radius-ui);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      border: 1px solid var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: white;
+      color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px var(--accent-soft);
+    }
+
+    .btn-glass {
+      background: var(--surface);
+      color: var(--fg);
+      backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--border);
+    }
+
+    .btn-glass:hover {
+      background: var(--fg);
+      color: white;
+      border-color: var(--fg);
+    }
+
+    /* --- Stat Cards --- */
+    .hero-stat-box {
+      background: var(--surface);
+      backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--border);
+      padding: 3rem;
+      border-radius: var(--radius-glass);
+      position: relative;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+    }
+
+    .stat-row {
+      display: grid;
+      gap: 3rem;
+    }
+
+    .stat-val {
+      display: block;
+      font-size: 4rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      color: var(--fg);
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+    }
+
+    /* --- Section Styling --- */
+    .section {
+      padding: 160px 0;
+      position: relative;
+    }
+
+    .section-title {
+      font-size: clamp(3rem, 6vw, 4.5rem);
+      margin-bottom: 4rem;
+      max-width: 800px;
+      color: var(--fg);
+    }
+
+    /* --- Glass Cards --- */
+    .glass-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .glass-card {
+      background: var(--surface);
+      backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--border);
+      padding: 3rem;
+      border-radius: var(--radius-glass);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.02);
+    }
+
+    .glass-card:hover {
+      transform: translateY(-12px);
+      border-color: var(--accent);
+      background: white;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      margin-bottom: 2rem;
+      color: var(--accent);
+      font-size: 1.25rem;
+    }
+
+    .glass-card h3 {
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+      color: var(--fg);
+    }
+
+    .glass-card p {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    /* --- Subsidy Matrix --- */
+    .matrix-container {
+      background: var(--surface);
+      backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-glass);
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+    }
+
+    .matrix-header {
+      padding: 3rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .matrix-body {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .matrix-cell {
+      background: white;
+      padding: 4rem 3rem;
+      transition: background 0.4s;
+    }
+
+    .matrix-cell:hover {
+      background: var(--surface);
+    }
+
+    .cell-cap {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .cell-amt {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      display: block;
+      color: var(--fg);
+    }
+
+    /* --- Footer --- */
+    footer {
+      padding: 120px 0 60px;
+      border-top: 1px solid var(--border);
+      background: white;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr repeat(3, 1fr);
+      gap: 6rem;
+      margin-bottom: 80px;
+    }
+
+    .footer-brand h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--fg);
+    }
+
+    .footer-brand p {
+      color: var(--muted);
+      max-width: 320px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 1rem; }
+    .footer-col a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+    .footer-col a:hover { color: var(--fg); }
+
+    .footer-bottom {
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+    }
+
+    @media (max-width: 1000px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero { height: auto; padding: 160px 0 80px; }
+      .matrix-body { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      nav { top: 0; width: 100%; border-radius: 0; border-inline: 0; }
+      .nav-links { display: none; }
+      .hero h1 { font-size: 3.5rem; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-flare">
+    <div class="flare-1"></div>
+    <div class="flare-2"></div>
+  </div>
+
+  <nav>
+    <a href="#" class="logo">Solar <span>Captures</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">Philosophy</a></li>
+      <li><a href="#subsidies">Subsidies</a></li>
+      <li><a href="#solutions">Solutions</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="tel:+918489111511" class="btn btn-primary">Connect</a>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <span class="eyebrow">MNRE Approved Partner</span>
+            <h1>Let the sun pay your bills</h1>
+            <p>We engineer high-efficiency solar systems that transform your roof into a precision power plant.</p>
+            <div class="btn-group">
+              <a href="#contact" class="btn btn-primary">Start Generation</a>
+              <a href="#subsidies" class="btn btn-glass">View Subsidies</a>
+            </div>
+          </div>
+          <div class="hero-stat-box">
+            <div class="stat-row">
+              <div class="stat-item">
+                <span class="stat-val">90%</span>
+                <span class="stat-label">Max Bill Reduction</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-val">₹0</span>
+                <span class="stat-label">Maintenance Cost</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-val">25Y</span>
+                <span class="stat-label">System Warranty</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subsidy Section -->
+    <section class="section" id="subsidies">
+      <div class="container">
+        <span class="eyebrow">PM-Surya Ghar Muft Bijli Yojana</span>
+        <h2 class="section-title">Government Backed Savings Matrix</h2>
+        
+        <div class="matrix-container">
+          <div class="matrix-header">
+            <div>
+              <h3 style="font-size: 2rem; margin-bottom: 0.5rem; color: var(--fg);">Subsidy Tiers</h3>
+              <p style="color: var(--muted);">Direct bank transfer benefits for residential solar</p>
+            </div>
+            <div style="text-align: right;">
+              <span class="eyebrow" style="margin-bottom: 0;">2024 active</span>
+            </div>
+          </div>
+          <div class="matrix-body">
+            <div class="matrix-cell">
+              <span class="cell-cap">1kW Capacity</span>
+              <span class="cell-amt">₹30,000</span>
+              <p style="color: var(--muted); font-size: 0.9rem;">Ideal for small residential homes with 2-3 occupants.</p>
+            </div>
+            <div class="matrix-cell">
+              <span class="cell-cap">2kW Capacity</span>
+              <span class="cell-amt">₹60,000</span>
+              <p style="color: var(--muted); font-size: 0.9rem;">Most popular choice for urban families and high usage.</p>
+            </div>
+            <div class="matrix-cell">
+              <span class="cell-cap">3kW+ Capacity</span>
+              <span class="cell-amt">₹78,000</span>
+              <p style="color: var(--muted); font-size: 0.9rem;">Maximum subsidy benefit for larger solar arrays.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="section" id="solutions">
+      <div class="container">
+        <span class="eyebrow">The Architecture</span>
+        <h2 class="section-title">Precision Energy Solutions</h2>
+        
+        <div class="glass-grid">
+          <div class="glass-card">
+            <div class="card-icon">⚡</div>
+            <h3>On-Grid Systems</h3>
+            <p>Connect directly to your local utility. Export excess power and watch your meter run backwards.</p>
+          </div>
+          <div class="glass-card">
+            <div class="card-icon">🔋</div>
+            <h3>Hybrid Systems</h3>
+            <p>The best of both worlds. Grid connectivity paired with battery backup for total energy security.</p>
+          </div>
+          <div class="glass-card">
+            <div class="card-icon">🏗️</div>
+            <h3>Commercial Solar</h3>
+            <p>High-capacity arrays engineered for industries, schools, and large-scale enterprises.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- App Preview / Monitoring -->
+    <section class="section">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="feature-content">
+            <span class="eyebrow">Smart Monitoring</span>
+            <h2 class="section-title" style="font-size: 3.5rem;">Intelligence in every photon</h2>
+            <p style="font-size: 1.1rem; color: var(--muted); margin-bottom: 2rem;">Track your generation, savings, and environmental impact in real-time with our custom monitoring suite.</p>
+            <ul style="list-style: none; color: var(--fg); font-weight: 500; font-family: var(--font-mono); font-size: 0.9rem;">
+              <li style="margin-bottom: 1rem;">→ Real-time generation metrics</li>
+              <li style="margin-bottom: 1rem;">→ Savings forecasting</li>
+              <li style="margin-bottom: 1rem;">→ System health diagnostics</li>
+            </ul>
+          </div>
+          <div style="position: relative; display: grid; place-items: center;">
+            <div class="glass-card" style="width: 300px; height: 500px; padding: 20px; display: flex; flex-direction: column; gap: 20px; border-radius: 40px; border-width: 2px;">
+              <div style="height: 4px; width: 40px; background: var(--border); margin: 0 auto; border-radius: 2px;"></div>
+              <div style="flex: 1; border: 1px solid var(--border); border-radius: 24px; background: white; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                 <div style="width: 120px; height: 120px; border-radius: 50%; border: 6px solid var(--accent); display: grid; place-items: center; box-shadow: 0 10px 40px var(--accent-soft);">
+                    <span style="font-size: 1.5rem; font-weight: 900; color: var(--fg);">2.4kW</span>
+                 </div>
+                 <span class="eyebrow" style="margin-top: 20px;">Current Gen</span>
+                 <div style="margin-top: 40px; width: 100%; display: flex; flex-direction: column; gap: 12px;">
+                    <div style="height: 12px; width: 100%; background: var(--bg); border-radius: 6px;"></div>
+                    <div style="height: 12px; width: 80%; background: var(--bg); border-radius: 6px;"></div>
+                    <div style="height: 12px; width: 60%; background: var(--bg); border-radius: 6px;"></div>
+                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">Solar <span>Captures</span></a>
+          <p style="margin-top: 2rem;">Transforming sunlight into sustainable freedom across Southern India.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <ul>
+            <li><a href="#solutions">Solutions</a></li>
+            <li><a href="#subsidies">Subsidies</a></li>
+            <li><a href="#">Process</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="tel:+918489111511">+91 84891 11511</a></li>
+            <li><a href="mailto:solarcaptures@gmail.com">Email Us</a></li>
+            <li><a href="#">Instagram</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Location</h4>
+          <ul>
+            <li>No. 2, 2nd Cross</li>
+            <li>Pon Nagar, Trichy</li>
+            <li>Tamil Nadu, 620001</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <span>© 2024 Solar Captures. All rights reserved.</span>
+        <div style="display: flex; gap: 2rem; align-items: center;">
+          <span style="color: var(--fg); font-weight: 800;">MNRE APPROVED</span>
+          <a href="#" style="color: var(--muted); text-decoration: none;">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
